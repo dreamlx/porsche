@@ -1,0 +1,3 @@
+class Tire < Product
+
+end
