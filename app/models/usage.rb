@@ -1,0 +1,2 @@
+class Usage < Order
+end
