@@ -12,6 +12,7 @@ ActiveAdmin.register Part do
 #   permitted
 # end
 # 
+menu parent: "Product"
 filter :code
 
 	permit_params :code, :category, :specification, :memo
@@ -21,6 +22,16 @@ filter :code
 		column :code
 		column :category
 		column :specification
+		column :order_num do |o|
+			o.last_stock.order_num
+		end
+		column :usage_num do |o|
+			o.last_stock.usage_num
+		end
+		column :stock_num do |o|
+			o.last_stock.stock_num
+		end
+
 		actions
 	end
 
@@ -31,8 +42,18 @@ filter :code
 			row :specification
 			row :memo
 		end
+		panel 'stock detail' do
+			table_for part.stocks do
+				column :created_at
+				column :order_num
+				column :usage_num
+				column :stock_num
+			end
+		end
 		active_admin_comments
 	end
+
+
 	form do |f|
 		f.semantic_errors # shows errors on :base
   	f.inputs do

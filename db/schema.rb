@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_11_093347) do
+ActiveRecord::Schema.define(version: 2019_06_13_081143) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2019_06_11_093347) do
   create_table "orders", force: :cascade do |t|
     t.string "order_no"
     t.string "type"
+    t.date "order_date"
     t.string "title"
     t.integer "user_id"
     t.string "status"
@@ -85,9 +86,9 @@ ActiveRecord::Schema.define(version: 2019_06_11_093347) do
     t.integer "usage_num"
     t.integer "stock_num"
     t.text "memo"
-    t.string "stockable_type"
-    t.integer "stockable_id"
-    t.index ["stockable_type", "stockable_id"], name: "index_stocks_on_stockable_type_and_stockable_id"
+    t.integer "product_id"
+    t.integer "order_item_id"
+    t.index ["product_id"], name: "index_stocks_on_product_id"
   end
 
 end

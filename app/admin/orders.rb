@@ -13,6 +13,7 @@ ActiveAdmin.register Order do
 # end
 # 
 
+menu false
 index do
 	column :id
 	column :type
@@ -23,7 +24,6 @@ end
 	show do
 		attributes_table do
 			row :type
-			row :id
 			row :order_no
 			row :title
 			row :order_date

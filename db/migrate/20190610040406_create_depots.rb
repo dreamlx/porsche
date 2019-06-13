@@ -6,7 +6,7 @@ class CreateDepots < ActiveRecord::Migration[5.2]
       t.text :address
       t.text :memo
       t.string :status
-      
+      t.timestamps
       
     end
   end

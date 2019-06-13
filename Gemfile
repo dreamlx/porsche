@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.4.1'
+ruby '2.5.3'
 gem 'activeadmin'
 gem 'activeadmin_addons' # 扩展 多级联动选择
 
 # Plus integrations with:
+gem 'websocket-extensions'
 gem 'devise'
 gem 'cancancan'
 gem 'draper'

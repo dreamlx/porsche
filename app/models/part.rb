@@ -1,3 +1,3 @@
 class Part < Product
-	
+		
 end

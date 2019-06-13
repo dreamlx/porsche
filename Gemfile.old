@@ -286,7 +286,7 @@ GEM
       railties (>= 5.0)
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.4)
+    websocket-extensions (0.1.4.1)
     xdan-datetimepicker-rails (2.5.4)
       jquery-rails
       rails (>= 3.2.16)
@@ -324,7 +324,7 @@ DEPENDENCIES
   websocket-extensions
 
 RUBY VERSION
-   ruby 2.5.3p105
+   ruby 2.4.1p111
 
 BUNDLED WITH
    1.17.3

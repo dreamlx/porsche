@@ -8,7 +8,8 @@ class CreateStocks < ActiveRecord::Migration[5.2]
       t.integer :stock_num
       t.text :memo
 
-      t.belongs_to :stockable, :polymorphic => true
+      t.belongs_to :product
+      t.timestamps
     end
   end
 end

@@ -1,2 +1,3 @@
 class Booking < Order
+
 end

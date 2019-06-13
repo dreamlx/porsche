@@ -12,13 +12,32 @@ ActiveAdmin.register OrderItem do
 #   permitted
 # end
 
+	filter :order_type, as: :select, collection: ['Usage', 'Booking']
+	filter :product_type, as: :select, collection: ['Tire', 'Part']
+	filter :order_no
+	
+	menu parent: "Report"
+
 	permit_params :id, :product_id, :quantity
 
 	index do 
 		column :id
-		column :orde_no
+		column :order_no do |o|
+			link_to o.order.order_no, admin_order_path(o.order)
+		end
+		column :order_date
 		column :product
+		column :product_type do |o|
+			o.product.type
+		end
+		column :order_type do |o|
+			o.order.type
+		end
 		column :quantity
+
+		div :class => "panel" do
+      h3 "Sum quantity: #{OrderItem.search(params[:q]).result.sum(:quantity)}"
+    end
 	end
 
 end

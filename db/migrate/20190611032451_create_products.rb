@@ -11,6 +11,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :vehicle_type
       t.text :memo
       t.string :status
+      t.timestamps
     end
   end
 end

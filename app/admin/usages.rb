@@ -11,7 +11,7 @@ ActiveAdmin.register Usage do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-
+menu priority: 1
 
 permit_params :title, :order_date,
 	order_items_attributes: [:id, :order_no, :product_id, :product, :quantity]
@@ -48,29 +48,27 @@ permit_params :title, :order_date,
 	form do |f|
 		f.semantic_errors # shows errors on :base
   	f.inputs do
-  		#f.input :order_no
-  		f.input :order_date, as: :datepicker, hint: 'Usage date'
+  		#f.input :order_no, input_html: { value: Date.today }
+  		f.input :order_date, as: :datepicker, hint: 'Usage date', input_html: { value: Date.today }
   		f.input :title, hint: 'order memo'
   		
   	end
 
-  	h3 'Tire or Part should be selected once in this form'
-
-  	f.inputs 'Tire' do
+  	f.inputs 'Tire or Part' do
   		f.has_many :order_items, new_record: 'add record', allow_destory: -> (c) { c.author?(current_admin_user) } do |o|
-  			o.input :product, collection: Tire.all.map{|t| [ "#{t.code} - #{t.category} - #{t.specification}", t.id,]}
+  			o.input :product, collection: Product.all.map{|t| [ "#{t.code} - #{t.category} - #{t.specification}", t.id,]}
   			o.input :quantity
   			
   		end
   	end
 
-  	f.inputs 'Part' do
-  		f.has_many :order_items, new_record: 'add record', allow_destory: -> (c) { c.author?(current_admin_user) } do |o|
-  			o.input :product, collection: Part.all.map{|t| [ "#{t.code} - #{t.category} - #{t.specification}", t.id,]}
-  			o.input :quantity
+  	# f.inputs 'Part' do
+  	# 	f.has_many :order_items, new_record: 'add record', allow_destory: -> (c) { c.author?(current_admin_user) } do |o|
+  	# 		o.input :product, collection: Part.all.map{|t| [ "#{t.code} - #{t.category} - #{t.specification}", t.id,]}
+  	# 		o.input :quantity
   			
-  		end
-  	end
+  	# 	end
+  	# end
 
   	f.actions
 	end
